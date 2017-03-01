@@ -39,8 +39,8 @@ public class HomeController extends DialogController {
 
 		nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
 		gradeColumn.setCellValueFactory(cellData -> cellData.getValue().gradeProperty());
-		dmgColumn.setCellValueFactory(cellData -> cellData.getValue().baseDamageProperty());
-		hpColumn.setCellValueFactory(cellData -> cellData.getValue().baseHealthProperty());
+		dmgColumn.setCellValueFactory(cellData -> cellData.getValue().getDamage().perStarProperty());
+		hpColumn.setCellValueFactory(cellData -> cellData.getValue().getHealth().perStarProperty());
 		asColumn.setCellValueFactory(cellData -> cellData.getValue().attackSpeedProperty());
 		msColumn.setCellValueFactory(cellData -> cellData.getValue().movementSpeedProperty());
 		

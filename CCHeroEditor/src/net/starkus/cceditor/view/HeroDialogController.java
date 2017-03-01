@@ -136,6 +136,7 @@ public class HeroDialogController extends DialogController {
 			}
 		});
 		
+		// TODO HERE
 		dmgStarField.setStyle("-fx-text-inner-color: red;");
 		
 		
@@ -210,30 +211,30 @@ public class HeroDialogController extends DialogController {
 		
 		gradeBox.getSelectionModel().select(hero.getGrade());
 		
-		dmgStarField.setText(Integer.toString(hero.getDamagePerStar()));
-		dmgLevelField.setText(Integer.toString(hero.getDamagePerLevel()));
+		dmgStarField.setText(Integer.toString(hero.getDamage().getPerStar()));
+		dmgLevelField.setText(Integer.toString(hero.getDamage().getPerLevel()));
 		
-		hpStarField.setText(Integer.toString(hero.getHealthPerStar()));
-		hpLevelField.setText(Integer.toString(hero.getHealthPerLevel()));
+		hpStarField.setText(Integer.toString(hero.getHealth().getPerStar()));
+		hpLevelField.setText(Integer.toString(hero.getHealth().getPerLevel()));
 		
 		atkspdField.setText(Integer.toString(hero.getAttackSpeed()));
 		movspdField.setText(Integer.toString(hero.getMovementSpeed()));
 		
-		evo1dmgKField.setText		(Integer.toString(hero.getEvo1DamageConstant()));
-		evo1dmgStarField.setText	(Integer.toString(hero.getEvo1DamagePerStar()));
-		evo1dmgLevelField.setText	(Integer.toString(hero.getEvo1DamagePerLevel()));
+		evo1dmgKField.setText		(Integer.toString(hero.getEvo1Damage().getConstant()));
+		evo1dmgStarField.setText	(Integer.toString(hero.getEvo1Damage().getPerStar()));
+		evo1dmgLevelField.setText	(Integer.toString(hero.getEvo1Damage().getPerLevel()));
 		
-		evo1hpKField.setText 		(Integer.toString(hero.getEvo1HealthConstant()));
-		evo1hpStarField.setText 	(Integer.toString(hero.getEvo1HealthPerStar()));
-		evo1hpLevelField.setText 	(Integer.toString(hero.getEvo1HealthPerLevel()));
+		evo1hpKField.setText 		(Integer.toString(hero.getEvo1Health().getConstant()));
+		evo1hpStarField.setText 	(Integer.toString(hero.getEvo1Health().getPerStar()));
+		evo1hpLevelField.setText 	(Integer.toString(hero.getEvo1Health().getPerLevel()));
 		
-		evo2dmgKField.setText		(Integer.toString(hero.getEvo2DamageConstant()));
-		evo2dmgStarField.setText	(Integer.toString(hero.getEvo2DamagePerStar()));
-		evo2dmgLevelField.setText	(Integer.toString(hero.getEvo2DamagePerLevel()));
+		evo2dmgKField.setText		(Integer.toString(hero.getEvo2Damage().getConstant()));
+		evo2dmgStarField.setText	(Integer.toString(hero.getEvo2Damage().getPerStar()));
+		evo2dmgLevelField.setText	(Integer.toString(hero.getEvo2Damage().getPerLevel()));
 		
-		evo2hpKField.setText 		(Integer.toString(hero.getEvo2HealthConstant()));
-		evo2hpStarField.setText 	(Integer.toString(hero.getEvo2HealthPerStar()));
-		evo2hpLevelField.setText 	(Integer.toString(hero.getEvo2HealthPerLevel()));
+		evo2hpKField.setText 		(Integer.toString(hero.getEvo2Health().getConstant()));
+		evo2hpStarField.setText 	(Integer.toString(hero.getEvo2Health().getPerStar()));
+		evo2hpLevelField.setText 	(Integer.toString(hero.getEvo2Health().getPerLevel()));
 		
 		rawSkill = hero.getSkill();
 		parsedSkill = GrowthParser.parseText(rawSkill);
@@ -250,30 +251,30 @@ public class HeroDialogController extends DialogController {
 		hero.setSkill(rawSkill);
 		
 		try {
-			hero.setDamagePerStar		(Integer.parseInt(dmgStarField.getText()));
-			hero.setDamagePerLevel		(Integer.parseInt(dmgLevelField.getText()));
+			hero.getDamage().setPerStar			(Integer.parseInt(dmgStarField.getText()));
+			hero.getDamage().setPerLevel		(Integer.parseInt(dmgLevelField.getText()));
 
-			hero.setHealthPerStar		(Integer.parseInt(hpStarField.getText()));
-			hero.setHealthPerLevel		(Integer.parseInt(hpLevelField.getText()));
+			hero.getHealth().setPerStar			(Integer.parseInt(hpStarField.getText()));
+			hero.getHealth().setPerLevel		(Integer.parseInt(hpLevelField.getText()));
 			
-			hero.setAttackSpeed			(Integer.parseInt(atkspdField.getText()));
-			hero.setMovementSpeed		(Integer.parseInt(movspdField.getText()));
+			hero.setAttackSpeed					(Integer.parseInt(atkspdField.getText()));
+			hero.setMovementSpeed				(Integer.parseInt(movspdField.getText()));
 
-			hero.setEvo1DamageConstant	(Integer.parseInt(evo1dmgKField.getText()));
-			hero.setEvo1DamagePerStar	(Integer.parseInt(evo1dmgStarField.getText()));
-			hero.setEvo1DamagePerLevel	(Integer.parseInt(evo1dmgLevelField.getText()));
+			hero.getEvo1Damage().setConstant	(Integer.parseInt(evo1dmgKField.getText()));
+			hero.getEvo1Damage().setPerStar		(Integer.parseInt(evo1dmgStarField.getText()));
+			hero.getEvo1Damage().setPerLevel	(Integer.parseInt(evo1dmgLevelField.getText()));
 
-			hero.setEvo1HealthConstant	(Integer.parseInt(evo1hpKField.getText()));
-			hero.setEvo1HealthPerStar	(Integer.parseInt(evo1hpStarField.getText()));
-			hero.setEvo1HealthPerLevel	(Integer.parseInt(evo1hpLevelField.getText()));
+			hero.getEvo1Health().setConstant	(Integer.parseInt(evo1hpKField.getText()));
+			hero.getEvo1Health().setPerStar		(Integer.parseInt(evo1hpStarField.getText()));
+			hero.getEvo1Health().setPerLevel	(Integer.parseInt(evo1hpLevelField.getText()));
 
-			hero.setEvo2DamageConstant	(Integer.parseInt(evo2dmgKField.getText()));
-			hero.setEvo2DamagePerStar	(Integer.parseInt(evo2dmgStarField.getText()));
-			hero.setEvo2DamagePerLevel	(Integer.parseInt(evo2dmgLevelField.getText()));
+			hero.getEvo2Damage().setConstant	(Integer.parseInt(evo2dmgKField.getText()));
+			hero.getEvo2Damage().setPerStar		(Integer.parseInt(evo2dmgStarField.getText()));
+			hero.getEvo2Damage().setPerLevel	(Integer.parseInt(evo2dmgLevelField.getText()));
 
-			hero.setEvo2HealthConstant	(Integer.parseInt(evo2hpKField.getText()));			
-			hero.setEvo2HealthPerStar	(Integer.parseInt(evo2hpStarField.getText()));
-			hero.setEvo2HealthPerLevel	(Integer.parseInt(evo2hpLevelField.getText()));
+			hero.getEvo2Health().setConstant	(Integer.parseInt(evo2hpKField.getText()));			
+			hero.getEvo2Health().setPerStar		(Integer.parseInt(evo2hpStarField.getText()));
+			hero.getEvo2Health().setPerLevel	(Integer.parseInt(evo2hpLevelField.getText()));
 
 			
 		} catch (NumberFormatException e) {
