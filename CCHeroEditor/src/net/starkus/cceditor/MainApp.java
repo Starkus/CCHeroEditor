@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import net.starkus.cceditor.model.Hero;
 import net.starkus.cceditor.util.DialogManager;
 import net.starkus.cceditor.util.SaveNLoad;
+import net.starkus.cceditor.util.StatRater;
 import net.starkus.cceditor.view.RootLayoutController;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -43,6 +44,8 @@ public class MainApp extends Application {
 			
 			SaveNLoad.init(this);
 			SaveNLoad.load(getSavefile());
+			
+			StatRater.createRecords(heroList);
 			
 		} catch(Exception e) {
 			e.printStackTrace();

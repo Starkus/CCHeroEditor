@@ -22,6 +22,11 @@ import net.starkus.cceditor.model.Grade;
 import net.starkus.cceditor.model.Hero;
 import net.starkus.cceditor.util.GrowthParser;
 import net.starkus.cceditor.util.SkillStyler;
+import net.starkus.cceditor.util.StatRater;
+import net.starkus.cceditor.util.StatRater.StatSubType;
+import net.starkus.cceditor.util.StatRater.StatType;
+import static net.starkus.cceditor.util.StatRater.StatSubType.*;
+import static net.starkus.cceditor.util.StatRater.StatType.*;
 
 public class HeroDialogController extends DialogController {
 	
@@ -136,10 +141,6 @@ public class HeroDialogController extends DialogController {
 			}
 		});
 		
-		// TODO HERE
-		dmgStarField.setStyle("-fx-text-inner-color: red;");
-		
-		
 		gradeBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Grade>() {
 
 			@Override
@@ -155,6 +156,8 @@ public class HeroDialogController extends DialogController {
 				evo2Stuff.setDisable(disable);
 			}
 		});
+		
+		setUpStatRater();
 	}
 	
 	@Override
@@ -288,6 +291,8 @@ public class HeroDialogController extends DialogController {
 			return;
 		}
 		
+		StatRater.updateRecords(hero);
+		
 		stage.close();
 	}
 	
@@ -295,6 +300,38 @@ public class HeroDialogController extends DialogController {
 	void handleCancel() {
 		
 		stage.close();
+	}
+	
+	void setUpStatRater() {
+		
+		TextField fields[] = {dmgStarField,		dmgLevelField,		hpStarField,		hpLevelField,
+							atkspdField,		movspdField,		evo1dmgKField,		evo1dmgStarField,
+							evo1dmgLevelField,	evo1hpKField,		evo1hpStarField,	evo1hpLevelField,
+							evo2dmgKField,		evo2dmgStarField,	evo2dmgLevelField,	evo2hpKField,
+							evo2hpStarField,	evo2hpLevelField};
+		
+		StatType types[] = {DAMAGE,		DAMAGE,		HEALTH,		HEALTH,
+							ATKSPD,		MOVSPD,		EVO1DAMAGE,	EVO1DAMAGE,
+							EVO1DAMAGE,	EVO1HEALTH,	EVO1HEALTH,	EVO1HEALTH,
+							EVO2DAMAGE,	EVO2DAMAGE,	EVO2DAMAGE,	EVO2HEALTH,
+							EVO2HEALTH,	EVO2HEALTH};
+		
+		StatSubType subTypes[] = {PERSTAR,	PERLEVEL,	PERSTAR,	PERLEVEL,
+								CONSTANT,	CONSTANT,	CONSTANT,	PERSTAR,
+								PERLEVEL,	CONSTANT,	PERSTAR,	PERLEVEL,
+								CONSTANT,	PERSTAR,	PERLEVEL,	CONSTANT,
+								PERSTAR,	PERLEVEL};
+		
+		for (int i=0; i < fields.length; i++) {
+			final int j = i; // please...
+			
+			fields[i].textProperty().addListener(new ChangeListener<String>() {
+				@Override
+				public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+					StatRater.rateInTextField(fields[j], types[j], subTypes[j]);
+				}
+			});
+		}
 	}
 
 }

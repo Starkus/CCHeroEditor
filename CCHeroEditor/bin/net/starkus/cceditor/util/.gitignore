@@ -8,3 +8,7 @@
 /EvoStatParser.class
 /EvoStatParser$EvoStat.class
 /StatRater.class
+/StatRater$StatRecord.class
+/StatRater$StatType.class
+/MathUtils.class
+/StatRater$StatSubType.class
