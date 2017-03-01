@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<?import org.fxmisc.richtext.InlineCssTextArea?>
+
+
+<AnchorPane fx:controller="net.starkus.cceditor.view.HeroDialogController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" >
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="16.0" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="18.0">
+         <children>
+            <ImageView fx:id="portraitView" fitHeight="265.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <HBox alignment="CENTER" spacing="12.0">
+               <children>
+                  <TextField fx:id="nameField" promptText="Name" text="" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <ChoiceBox fx:id="gradeBox" prefWidth="140.0" HBox.hgrow="SOMETIMES" />
+               </children>
+               <VBox.margin>
+                  <Insets left="40.0" right="40.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox spacing="12.0">
+               <children>
+                  <VBox alignment="CENTER" spacing="8.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <ImageView fx:id="dmgIcon" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" />
+                        <TextField fx:id="dmgField" alignment="CENTER" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" spacing="8.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <ImageView fx:id="hpIcon" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" />
+                        <TextField fx:id="hpField" alignment="CENTER" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" spacing="8.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <ImageView fx:id="asIcon" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" />
+                        <TextField fx:id="atkspdField" alignment="CENTER" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" spacing="8.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <ImageView fx:id="msIcon" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" />
+                        <TextField fx:id="movspdField" alignment="CENTER" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <InlineCssTextArea fx:id="skillField" wrapText="true" VBox.vgrow="ALWAYS" />
+            <HBox alignment="BOTTOM_RIGHT" spacing="14.0">
+               <children>
+                  <Button defaultButton="true" onAction="#handleSave" mnemonicParsing="false" prefWidth="90.0" text="OK" />
+                  <Button cancelButton="true" onAction="#handleCancel" mnemonicParsing="false" prefWidth="90.0" text="Cancel" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
