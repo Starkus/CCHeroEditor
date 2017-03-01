@@ -16,7 +16,7 @@ public class GrowthParser {
 		
 		for (String exp : expressionSegments) {
 			
-			if (exp.toUpperCase().contains("X") && exp.contains("+")) {
+			if (exp.toUpperCase().contains("X") && (exp.contains("+") || exp.contains("-"))) {
 				String parsed = parseLinearExpression(exp);
 				finalGrowths.add(parsed);
 			}
@@ -63,24 +63,38 @@ public class GrowthParser {
 
 	static String parseLinearExpression(String s) {
 		
-		int a = 0;
-		int b = 0;
+		float a = 0;
+		float b = 0;
 		
-		for (String half : s.split("\\+")) {
+		int sign = 1;
+		
+		String c = "\\+";
+		if (s.contains("-")) {
+			c = "\\-";
+			sign = -1;
+		}
+		
+		String pair[] = s.split(c);
+		
+		for (String half : pair) {
 			
 			half = half.toUpperCase();
 			
 			if (half.contains("X")) {
-				a = Integer.parseInt(half.replace("X", ""));
+				a = Float.parseFloat(half.replace("X", "")) * sign;
 			}
 			else {
-				b = Integer.parseInt(half);
+				b = Float.parseFloat(half);
 			}
 		}
 		
 		String result = "[";
 		for (int i=0; i<10; ++i) {
-			result += Integer.toString(b + a*i);
+			String num = Float.toString(b + a*i);
+			if (num.endsWith(".0"))
+				num = num.substring(0, num.length()-2);
+			
+			result += num;
 			result += "/";
 		}
 		result = result.substring(0, result.length()-1) + "]";

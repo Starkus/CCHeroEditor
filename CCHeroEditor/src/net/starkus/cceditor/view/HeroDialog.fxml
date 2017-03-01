@@ -10,12 +10,11 @@
 
 <?import org.fxmisc.richtext.InlineCssTextArea?>
 
-
-<AnchorPane fx:controller="net.starkus.cceditor.view.HeroDialogController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" >
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.starkus.cceditor.view.HeroDialogController">
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="16.0" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="18.0">
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="16.0" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="10.0">
          <children>
-            <ImageView fx:id="portraitView" fitHeight="265.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="portraitView" fitHeight="240.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
             <HBox alignment="CENTER" spacing="12.0">
                <children>
                   <TextField fx:id="nameField" promptText="Name" text="" HBox.hgrow="ALWAYS">
@@ -29,41 +28,141 @@
                   <Insets left="40.0" right="40.0" />
                </VBox.margin>
             </HBox>
-            <HBox spacing="12.0">
-               <children>
-                  <VBox alignment="CENTER" spacing="8.0" HBox.hgrow="ALWAYS">
-                     <children>
-                        <ImageView fx:id="dmgIcon" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" />
-                        <TextField fx:id="dmgField" alignment="CENTER" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" spacing="8.0" HBox.hgrow="ALWAYS">
-                     <children>
-                        <ImageView fx:id="hpIcon" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" />
-                        <TextField fx:id="hpField" alignment="CENTER" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" spacing="8.0" HBox.hgrow="ALWAYS">
-                     <children>
-                        <ImageView fx:id="asIcon" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" />
-                        <TextField fx:id="atkspdField" alignment="CENTER" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" spacing="8.0" HBox.hgrow="ALWAYS">
-                     <children>
-                        <ImageView fx:id="msIcon" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" />
-                        <TextField fx:id="movspdField" alignment="CENTER" />
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <InlineCssTextArea fx:id="skillField" wrapText="true" VBox.vgrow="ALWAYS" />
+            
+            <TabPane prefHeight="85.0" prefWidth="464.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Base">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0">
+                           <children>
+                              <HBox spacing="12.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-0.0">
+                                 <children>
+                                    <VBox alignment="CENTER" spacing="8.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <ImageView fx:id="dmgIcon" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" />
+                                          <HBox>
+                                             <children>
+                                                <TextField fx:id="dmgStarField" alignment="CENTER" />
+                                                <TextField fx:id="dmgLevelField" alignment="CENTER" minWidth="-Infinity" prefWidth="50.0" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" spacing="8.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <ImageView fx:id="hpIcon" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" />
+                                          <HBox>
+                                             <children>
+                                                <TextField fx:id="hpStarField" alignment="CENTER" />
+                                                <TextField fx:id="hpLevelField" alignment="CENTER" minWidth="-Infinity" prefWidth="50.0" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" spacing="8.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <ImageView fx:id="asIcon" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" />
+                                          <TextField fx:id="atkspdField" alignment="CENTER" />
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" spacing="8.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <ImageView fx:id="msIcon" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" />
+                                          <TextField fx:id="movspdField" alignment="CENTER" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Evolution">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0">
+                           <children>
+                               <HBox fx:id="evo1Stuff" alignment="CENTER" spacing="12.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-0.0">
+                                 <children>
+                                    <VBox alignment="CENTER" spacing="8.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label alignment="CENTER" text="Damage (Constant / Per star / Per level)" />
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <TextField fx:id="evo1dmgKField" alignment="CENTER" prefWidth="70.0" />
+                                                <TextField fx:id="evo1dmgStarField" alignment="CENTER" prefWidth="70.0" />
+                                                <TextField fx:id="evo1dmgLevelField" alignment="CENTER" prefWidth="50.0" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" spacing="8.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label alignment="CENTER" text="Health (Constant / Per star / Per level)" />
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <TextField fx:id="evo1hpKField" alignment="CENTER" prefWidth="70.0" />
+                                                <TextField fx:id="evo1hpStarField" alignment="CENTER" prefWidth="70.0" />
+                                                <TextField fx:id="evo1hpLevelField" alignment="CENTER" prefWidth="50.0" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="Double Evolution">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0">
+                           <children>
+                              <HBox fx:id="evo2Stuff" alignment="CENTER" spacing="12.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-0.0">
+                                 <children>
+                                    <VBox alignment="CENTER" spacing="8.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label alignment="CENTER" text="Damage (Constant / Per star / Per level)" />
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <TextField fx:id="evo2dmgKField" alignment="CENTER" prefWidth="70.0" />
+                                                <TextField fx:id="evo2dmgStarField" alignment="CENTER" prefWidth="70.0" />
+                                                <TextField fx:id="evo2dmgLevelField" alignment="CENTER" prefWidth="50.0" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" spacing="8.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label alignment="CENTER" text="Health (Constant / Per star / Per level)" />
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <TextField fx:id="evo2hpKField" alignment="CENTER" prefWidth="70.0" />
+                                                <TextField fx:id="evo2hpStarField" alignment="CENTER" prefWidth="70.0" />
+                                                <TextField fx:id="evo2hpLevelField" alignment="CENTER" prefWidth="50.0" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </TabPane>
+
+            <InlineCssTextArea fx:id="skillField" wrapText="true" VBox.vgrow="ALWAYS" />       
+            
             <HBox alignment="BOTTOM_RIGHT" spacing="14.0">
                <children>
-                  <Button defaultButton="true" onAction="#handleSave" mnemonicParsing="false" prefWidth="90.0" text="OK" />
-                  <Button cancelButton="true" onAction="#handleCancel" mnemonicParsing="false" prefWidth="90.0" text="Cancel" />
+                  <Button defaultButton="true" mnemonicParsing="false" onAction="#handleSave" prefWidth="90.0" text="OK" />
+                  <Button cancelButton="true" mnemonicParsing="false" onAction="#handleCancel" prefWidth="90.0" text="Cancel" />
                </children>
-            </HBox>
+            </HBox>  
          </children>
       </VBox>
    </children>

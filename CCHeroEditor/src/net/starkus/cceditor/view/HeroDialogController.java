@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import net.starkus.cceditor.MainApp;
 import net.starkus.cceditor.model.Grade;
 import net.starkus.cceditor.model.Hero;
@@ -34,13 +35,50 @@ public class HeroDialogController extends DialogController {
 	ImageView portraitView;
 
 	@FXML
-	TextField dmgField;
+	TextField dmgStarField;
 	@FXML
-	TextField hpField;
+	TextField dmgLevelField;
+	@FXML
+	TextField hpStarField;
+	@FXML
+	TextField hpLevelField;
 	@FXML
 	TextField atkspdField;
 	@FXML
 	TextField movspdField;
+
+	@FXML
+	TextField evo1dmgKField;
+	@FXML
+	TextField evo1dmgStarField;
+	@FXML
+	TextField evo1dmgLevelField;
+
+	@FXML
+	TextField evo1hpKField;
+	@FXML
+	TextField evo1hpStarField;
+	@FXML
+	TextField evo1hpLevelField;
+	
+	@FXML
+	TextField evo2dmgKField;
+	@FXML
+	TextField evo2dmgStarField;
+	@FXML
+	TextField evo2dmgLevelField;
+	
+	@FXML
+	TextField evo2hpKField;
+	@FXML
+	TextField evo2hpStarField;
+	@FXML
+	TextField evo2hpLevelField;
+
+	@FXML
+	HBox evo1Stuff;
+	@FXML
+	HBox evo2Stuff;
 	
 	@FXML
 	InlineCssTextArea skillField;
@@ -95,6 +133,25 @@ public class HeroDialogController extends DialogController {
 					skillField.replaceText(rawSkill);
 					skillField.clearStyle(0);
 				}
+			}
+		});
+		
+		dmgStarField.setStyle("-fx-text-inner-color: red;");
+		
+		
+		gradeBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Grade>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Grade> observable, Grade oldValue, Grade newValue) {
+				
+				boolean disable = true;
+				
+				if (newValue == Grade.LEGENDARY) {
+					disable = false;
+				}
+
+				evo1Stuff.setDisable(disable);
+				evo2Stuff.setDisable(disable);
 			}
 		});
 	}
@@ -153,10 +210,30 @@ public class HeroDialogController extends DialogController {
 		
 		gradeBox.getSelectionModel().select(hero.getGrade());
 		
-		dmgField.setText(Integer.toString(hero.getBaseDamage()));
-		hpField.setText(Integer.toString(hero.getBaseHealth()));
+		dmgStarField.setText(Integer.toString(hero.getDamagePerStar()));
+		dmgLevelField.setText(Integer.toString(hero.getDamagePerLevel()));
+		
+		hpStarField.setText(Integer.toString(hero.getHealthPerStar()));
+		hpLevelField.setText(Integer.toString(hero.getHealthPerLevel()));
+		
 		atkspdField.setText(Integer.toString(hero.getAttackSpeed()));
 		movspdField.setText(Integer.toString(hero.getMovementSpeed()));
+		
+		evo1dmgKField.setText		(Integer.toString(hero.getEvo1DamageConstant()));
+		evo1dmgStarField.setText	(Integer.toString(hero.getEvo1DamagePerStar()));
+		evo1dmgLevelField.setText	(Integer.toString(hero.getEvo1DamagePerLevel()));
+		
+		evo1hpKField.setText 		(Integer.toString(hero.getEvo1HealthConstant()));
+		evo1hpStarField.setText 	(Integer.toString(hero.getEvo1HealthPerStar()));
+		evo1hpLevelField.setText 	(Integer.toString(hero.getEvo1HealthPerLevel()));
+		
+		evo2dmgKField.setText		(Integer.toString(hero.getEvo2DamageConstant()));
+		evo2dmgStarField.setText	(Integer.toString(hero.getEvo2DamagePerStar()));
+		evo2dmgLevelField.setText	(Integer.toString(hero.getEvo2DamagePerLevel()));
+		
+		evo2hpKField.setText 		(Integer.toString(hero.getEvo2HealthConstant()));
+		evo2hpStarField.setText 	(Integer.toString(hero.getEvo2HealthPerStar()));
+		evo2hpLevelField.setText 	(Integer.toString(hero.getEvo2HealthPerLevel()));
 		
 		rawSkill = hero.getSkill();
 		parsedSkill = GrowthParser.parseText(rawSkill);
@@ -173,10 +250,31 @@ public class HeroDialogController extends DialogController {
 		hero.setSkill(rawSkill);
 		
 		try {
-			hero.setBaseDamage		(Integer.parseInt(dmgField.getText()));
-			hero.setBaseHealth		(Integer.parseInt(hpField.getText()));
-			hero.setAttackSpeed		(Integer.parseInt(atkspdField.getText()));
-			hero.setMovementSpeed	(Integer.parseInt(movspdField.getText()));
+			hero.setDamagePerStar		(Integer.parseInt(dmgStarField.getText()));
+			hero.setDamagePerLevel		(Integer.parseInt(dmgLevelField.getText()));
+
+			hero.setHealthPerStar		(Integer.parseInt(hpStarField.getText()));
+			hero.setHealthPerLevel		(Integer.parseInt(hpLevelField.getText()));
+			
+			hero.setAttackSpeed			(Integer.parseInt(atkspdField.getText()));
+			hero.setMovementSpeed		(Integer.parseInt(movspdField.getText()));
+
+			hero.setEvo1DamageConstant	(Integer.parseInt(evo1dmgKField.getText()));
+			hero.setEvo1DamagePerStar	(Integer.parseInt(evo1dmgStarField.getText()));
+			hero.setEvo1DamagePerLevel	(Integer.parseInt(evo1dmgLevelField.getText()));
+
+			hero.setEvo1HealthConstant	(Integer.parseInt(evo1hpKField.getText()));
+			hero.setEvo1HealthPerStar	(Integer.parseInt(evo1hpStarField.getText()));
+			hero.setEvo1HealthPerLevel	(Integer.parseInt(evo1hpLevelField.getText()));
+
+			hero.setEvo2DamageConstant	(Integer.parseInt(evo2dmgKField.getText()));
+			hero.setEvo2DamagePerStar	(Integer.parseInt(evo2dmgStarField.getText()));
+			hero.setEvo2DamagePerLevel	(Integer.parseInt(evo2dmgLevelField.getText()));
+
+			hero.setEvo2HealthConstant	(Integer.parseInt(evo2hpKField.getText()));			
+			hero.setEvo2HealthPerStar	(Integer.parseInt(evo2hpStarField.getText()));
+			hero.setEvo2HealthPerLevel	(Integer.parseInt(evo2hpLevelField.getText()));
+
 			
 		} catch (NumberFormatException e) {
 			e.printStackTrace();

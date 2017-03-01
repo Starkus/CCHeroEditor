@@ -5,3 +5,6 @@
 /SavefileWrapper$HeroListWrapper.class
 /SavefileWrapper.class
 /SkillStyler.class
+/EvoStatParser.class
+/EvoStatParser$EvoStat.class
+/StatRater.class
